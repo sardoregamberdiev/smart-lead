@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: smartlead
+  datasource:
+    url: jdbc:h2:mem:smartlead
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+logging:
+  level:
+    com.esardor: DEBUG
+    org.flywaydb: DEBUG
+
+# HuggingFace (token goes in separate secrets file)
+ai:
+  huggingface:
+    token: ${HF_TOKEN}

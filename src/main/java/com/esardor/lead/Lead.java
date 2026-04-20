@@ -2,11 +2,25 @@ package com.esardor.lead;
 
 import com.esardor.message.InboundMessage;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "lead")
+@Table(
+        name = "lead",
+        uniqueConstraints = @UniqueConstraint(
+                name = "uk_lead_message_id",
+                columnNames = {"message_id"}
+        )
+)
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Lead {
 
     @Id
@@ -33,86 +47,4 @@ public class Lead {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
-
-    public Lead() {
-    }
-
-    public Lead(InboundMessage message, String title, LeadType type, LeadUrgency urgency, String summary, LocalDateTime createdAt) {
-        this.message = message;
-        this.title = title;
-        this.type = type;
-        this.urgency = urgency;
-        this.summary = summary;
-        this.createdAt = createdAt;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public InboundMessage getMessage() {
-        return message;
-    }
-
-    public void setMessage(InboundMessage message) {
-        this.message = message;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public LeadType getType() {
-        return type;
-    }
-
-    public void setType(LeadType type) {
-        this.type = type;
-    }
-
-    public LeadUrgency getUrgency() {
-        return urgency;
-    }
-
-    public void setUrgency(LeadUrgency urgency) {
-        this.urgency = urgency;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    @Override
-    public String toString() {
-        return "Lead{" +
-                "id=" + id +
-                ", message=" + message +
-                ", title='" + title + '\'' +
-                ", type=" + type +
-                ", urgency=" + urgency +
-                ", summary='" + summary + '\'' +
-                ", createdAt=" + createdAt +
-                '}';
-    }
-
 }

@@ -17,3 +17,7 @@ CREATE TABLE lead (
                       CONSTRAINT fk_lead_message FOREIGN KEY (message_id)
                           REFERENCES inbound_message(id)
 );
+
+CREATE INDEX idx_lead_type ON lead (type);
+CREATE INDEX idx_lead_urgency ON lead (urgency);
+CREATE INDEX idx_inbound_message_email ON inbound_message (email);
