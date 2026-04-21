@@ -13,7 +13,7 @@ public class OpenApiConfig {
     public OpenAPI smartleadOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Smartlead API")
+                        .title("Smart Lead API")
                         .description(
                                 "AI-powered lead qualification backend. " +
                                         "Inbound messages are automatically analyzed " +
