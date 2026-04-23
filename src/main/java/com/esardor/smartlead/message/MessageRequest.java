@@ -23,6 +23,6 @@ public record MessageRequest(
                 example = "We are a team of 50 engineers and would like to schedule a demo"
         )
         @NotBlank(message = "Message is required")
-        @Size(min = 10, message = "Message must not exceed 10 characters")
+        @Size(min = 10, message = "Message must be at least 10 characters")
         String message) {
 }
