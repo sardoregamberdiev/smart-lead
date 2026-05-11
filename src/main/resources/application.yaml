@@ -30,6 +30,6 @@ logging:
 
 ai:
   huggingface:
-    token: ${HF_TOKEN}
+    token: hf_xxxxxxxxxxxxxxxx
     base-url: https://router.huggingface.co
     model: meta-llama/Llama-3.3-70B-Instruct:groq
